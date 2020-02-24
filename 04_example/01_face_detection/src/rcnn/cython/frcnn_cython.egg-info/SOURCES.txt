@@ -1,0 +1,8 @@
+anchors.c
+bbox.c
+cpu_nms.c
+setup.py
+frcnn_cython.egg-info/PKG-INFO
+frcnn_cython.egg-info/SOURCES.txt
+frcnn_cython.egg-info/dependency_links.txt
+frcnn_cython.egg-info/top_level.txt

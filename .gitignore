@@ -2,6 +2,7 @@
 *.iws
 *.iml
 atlassian-ide-plugin.xml
+models/
 target/
 lib_managed/
 src_managed/
