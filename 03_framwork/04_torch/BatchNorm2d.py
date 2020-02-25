@@ -2,6 +2,7 @@
 import torch
 import torch.nn as nn
 
+# 对数据进行归一化处理，避免数据量过大导致网络性能不稳定
 # num_features - num_features from an expected input of size:batch_size*num_features*height*width
 # eps:default:1e-5 (公式中为数值稳定性加到分母上的值)
 # momentum:动量参数，用于running_mean and running_var计算的值，default：0.1
@@ -15,3 +16,17 @@ print(m.weight)
 print(m.bias)
 print(output)
 print(output.size())
+
+print("输入的第一个维度:")
+print(input[0][0])
+# 这个数据是第一个3*4的二维数据，求第一个维度的均值和方差
+firstDimenMean = torch.Tensor.mean(input[0][0])
+firstDimenVar = torch.Tensor.var(input[0][0], False)  # false表示贝塞尔校正不会被使用
+print(m)
+print('m.eps=', m.eps)
+print(firstDimenMean)
+print(firstDimenVar)
+
+batchnormone=((input[0][0][0][0]-firstDimenMean)/(torch.pow(firstDimenVar,0.5)+m.eps))\
+    *m.weight[0]+m.bias[0]
+print(batchnormone)
