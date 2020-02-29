@@ -138,7 +138,7 @@ def train_net(args):
                 ctx.append(mx.gpu(i))
             print(cvd)
         elif len(cvd) == 0:
-            ctx = [mx.cpu()]
+            ctx.append(mx.cpu())
             print('use cpu')
         else:
             print('gpu num: ', len(ctx))
