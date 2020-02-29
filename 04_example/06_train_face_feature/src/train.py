@@ -7,6 +7,7 @@ import spherenet
 import verification
 from metric import *
 from train_config import config, default, generate_config
+import fresnet
 
 args = None
 
