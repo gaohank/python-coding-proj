@@ -114,7 +114,7 @@ dataset = ed()
 
 dataset.webface = ed()
 dataset.webface.dataset = 'webface'
-dataset.webface.dataset_path = '/home/amax/iKang/cp/data/face_recognition/webface/merge_file'
+dataset.webface.dataset_path = '../models/webface/merge_file'
 dataset.webface.num_classes = 10572
 dataset.webface.image_shape = (112, 112, 3)
 dataset.webface.val_targets = ['lfw', 'cfp_fp', 'agedb_30', 'calfw', 'cfp_ff']
@@ -128,28 +128,28 @@ dataset.retina.val_targets = ['lfw', 'cfp_fp', 'agedb_30']
 
 dataset.vgg = ed()
 dataset.vgg.dataset = "vgg"
-dataset.vgg.dataset_path = "/home/amax/iKang/cp/data/face_recognition/vgg/merge_file/"
+dataset.vgg.dataset_path = "../models/vgg/merge_file/"
 dataset.vgg.num_classes = 8631
 dataset.vgg.image_shape = (112, 112, 3)
 dataset.vgg.val_targets = [""]
 
 dataset.ms1m = ed()
 dataset.ms1m.dataset = "ms1m"
-dataset.ms1m.dataset_path = "/data0/face_recognition/ms1m/merge_file"
+dataset.ms1m.dataset_path = "../models/ms1m/merge_file"
 dataset.ms1m.num_classes = 85164
 dataset.ms1m.image_shape = [112, 112, 3]
 dataset.ms1m.val_targets = [""]
 
 dataset.glintasia = ed()
 dataset.glintasia.dataset = "glintasia"
-dataset.glintasia.dataset_path = "/data0/face_recognition/glintasia/merge_file"
+dataset.glintasia.dataset_path = "../models/glintasia/merge_file"
 dataset.glintasia.num_classes = 93979
 dataset.glintasia.image_shape = [112, 112, 3]
 dataset.glintasia.val_targets = [""]
 
 dataset.umd = ed()
 dataset.umd.dataset = 'umd'
-dataset.umd.dataset_path = "/data0/face_recognition/umd"
+dataset.umd.dataset_path = "../models/umd"
 dataset.umd.num_classes = 8277
 dataset.umd.image_shape = [112, 112, 3]
 dataset.umd.val_targets = [""]
@@ -212,7 +212,7 @@ default = ed()
 
 # default network
 default.network = 'r100'
-default.pretrained = 'pretrain/model-r100-ii/model'
+default.pretrained = '../models/pretrain/model-r100-ii/model'
 default.pretrained_epoch = 0
 # default dataset
 default.dataset = ["webface", 'vgg', 'ms1m', 'glintasia', 'umd']
