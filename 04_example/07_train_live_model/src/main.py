@@ -1,4 +1,5 @@
 # codin:utf8
+# https://github.com/JinghuiZhou/awesome_face_antispoofing
 from live_config import opt
 import os
 import pickle
