@@ -1,4 +1,5 @@
 # codin:utf8
+from live_config import opt
 import os
 import pickle
 import random
