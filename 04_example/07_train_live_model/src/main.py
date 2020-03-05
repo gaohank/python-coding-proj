@@ -16,7 +16,7 @@ from tqdm import tqdm
 
 import roc
 import mymodels
-from config import opt
+from live_config import opt
 from data import myData
 from loss import FocalLoss
 from utils import Visualizer
