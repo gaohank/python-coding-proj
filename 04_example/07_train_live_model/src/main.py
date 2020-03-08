@@ -67,7 +67,7 @@ data_transforms = {
 def train(**kwargs):
     # 根据命令行参数更新配置
     opt.parse(kwargs)
-    vis = Visualizer(opt.env)
+    # vis = Visualizer(opt.env)
     # step1: 模型
     model = getattr(mymodels, opt.model)()
 
@@ -106,7 +106,7 @@ def train(**kwargs):
                               batch_size=opt.batch_size, shuffle=True)
     print(train_loader)
     val_loader = DataLoader(dataset=val_data,
-                            batch_size=opt.batch_size // 2, shuffle=False)
+                            batch_size=opt.batch_size, shuffle=False)
 
     dataloaders = {'train': train_loader, 'val': val_loader}
     dataset_sizes = {'train': len(train_data), 'val': len(val_data)}
@@ -259,7 +259,7 @@ def val(model, dataloader, data_len):
         score = model(val_input)
         _, preds = torch.max(score, 1)
         loss = criterion(score, val_label)
-        confusion_matrix.add(score.data.squeeze(), val_label)
+        # confusion_matrix.add(score.data.squeeze(), val_label)
         running_loss += loss.item() * val_input.size(0)
         running_corrects += torch.sum(preds == val_label.data)
 
@@ -272,10 +272,10 @@ def val(model, dataloader, data_len):
     model.train(True)
 
     metric = roc.cal_metric(label_list, result_list)
-    cm_value = confusion_matrix.value()
+    # cm_value = confusion_matrix.value()
     val_loss = running_loss / data_len
     val_accuracy = running_corrects.double() / float(data_len)
-    return confusion_matrix, val_loss, val_accuracy, metric
+    return val_loss, val_accuracy, metric
 
 
 def test(**kwargs):

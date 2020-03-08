@@ -20,7 +20,7 @@ class DefaultConfig(object):
     # load_model_path = 'checkpoints/model.pth' # 加载预训练的模型的路径，为None代表不加载
     load_model_path = None  # 加载预训练的模型的路径，为None代表不加载
 
-    batch_size = 16  # batch size
+    batch_size = 1  # batch size
     use_gpu = torch.cuda.is_available()  # use GPU or not
     # use_gpu = True # use GPU or not
     num_workers = 8  # how many workers for loading data
@@ -28,7 +28,7 @@ class DefaultConfig(object):
     debug_file = '/tmp/debug'  # if os.path.exists(debug_file): enter ipdb
     result_name = 'result'
 
-    max_epoch = 10
+    max_epoch = 4
     lr = 0.01  # initial learning rate
     lr_decay = 0.5  # when val_loss increase, lr = lr*lr_decay
     lr_stepsize = 3  # learning step size

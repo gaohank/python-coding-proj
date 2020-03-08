@@ -12,7 +12,7 @@ def cal_metric(groundTruth, predicted):
 	z = tpr +fpr
 	tpr = tpr.reshape((tpr.shape[0],1))
 	fpr = fpr.reshape((fpr.shape[0],1))
-	xnew = np.arange(0, 1, 0.0000001)
+	xnew = np.arange(0, 1, 0.1)
 	func = interpolate.interp1d(x, y)
 
 	ynew = func(xnew)
