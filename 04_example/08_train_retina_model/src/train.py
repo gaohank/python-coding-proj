@@ -145,6 +145,7 @@ def train_net(args, ctx, pretrained, epoch, prefix, begin_epoch, end_epoch,
                  fixed_param_names=fixed_param_names)
 
     # metric
+    # 评价标准，使用add方法增加评价方式
     eval_metrics = mx.metric.CompositeEvalMetric()
     mid = 0
     for m in range(len(config.RPN_FEAT_STRIDE)):
@@ -207,6 +208,7 @@ def train_net(args, ctx, pretrained, epoch, prefix, begin_epoch, end_epoch,
     logger.info('lr %f lr_epoch_diff %s lr_steps %s' % (lr, lr_epoch_diff, lr_steps))
     # optimizer
     opt = optimizer.SGD(learning_rate=lr, momentum=0.9, wd=0.0005, rescale_grad=1.0 / len(ctx), clip_gradient=None)
+    # 随机初始化一般使用gaussian，现在主要使用别人的模型的参数来初始化
     initializer = mx.init.Xavier()
     # initializer = mx.init.Xavier(rnd_type='gaussian', factor_type="out", magnitude=2) #resnet style
 
@@ -265,6 +267,7 @@ def train_net(args, ctx, pretrained, epoch, prefix, begin_epoch, end_epoch,
             sys.exit(0)
 
     # train
+    # kvstore表示梯度更新在GPU还是CPU运行，默认local表示CPU进行，device表示GPU进行
     mod.fit(train_data, eval_metric=eval_metrics, epoch_end_callback=epoch_end_callback,
             batch_end_callback=_batch_callback, kvstore=args.kvstore,
             optimizer=opt,
