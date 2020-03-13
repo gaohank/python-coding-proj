@@ -3,6 +3,7 @@
 *.iml
 atlassian-ide-plugin.xml
 models/
+model/
 target/
 lib_managed/
 src_managed/
@@ -12,3 +13,4 @@ project/boot/
 *.log
 log/
 .DS_Store
+*.npy
