@@ -212,6 +212,7 @@ def train_net(args, ctx, pretrained, epoch, prefix, begin_epoch, end_epoch,
     initializer = mx.init.Xavier()
     # initializer = mx.init.Xavier(rnd_type='gaussian', factor_type="out", magnitude=2) #resnet style
 
+    # 多线程迭代器
     train_data = mx.io.PrefetchingIter(train_data)
 
     _cb = mx.callback.Speedometer(train_data.batch_size, frequent=args.frequent, auto_reset=False)
