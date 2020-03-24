@@ -2,7 +2,7 @@
 import time
 import torch
 #import pretrainedmodels
-from torchvision import datasets, models,transforms
+from torchvision import models
 import torch.nn as nn
 class BasicModule(torch.nn.Module):
    '''

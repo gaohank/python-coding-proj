@@ -78,7 +78,7 @@ class COCO:
             tic = time.time()
             dataset = json.load(open(annotation_file, 'r'))
             assert type(dataset)==dict, 'annotation file format {} not supported'.format(type(dataset))
-            print('Done (t={:0.2f}s)'.format(time.time()- tic))
+            print('Done (t={:0.2f}s)'.format(time.time() - tic))
             self.dataset = dataset
             self.createIndex()
 
@@ -344,7 +344,7 @@ class COCO:
                 ann['area'] = (x1-x0)*(y1-y0)
                 ann['id'] = id + 1
                 ann['bbox'] = [x0,y0,x1-x0,y1-y0]
-        print('DONE (t={:0.2f}s)'.format(time.time()- tic))
+        print('DONE (t={:0.2f}s)'.format(time.time() - tic))
 
         res.dataset['annotations'] = anns
         res.createIndex()
@@ -372,7 +372,7 @@ class COCO:
             fname = os.path.join(tarDir, img['file_name'])
             if not os.path.exists(fname):
                 urlretrieve(img['coco_url'], fname)
-            print('downloaded {}/{} images (t={:0.1f}s)'.format(i, N, time.time()- tic))
+            print('downloaded {}/{} images (t={:0.1f}s)'.format(i, N, time.time() - tic))
 
     def loadNumpyAnnotations(self, data):
         """

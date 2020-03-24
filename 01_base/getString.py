@@ -1,11 +1,6 @@
-import json
 import requests
-from flask import Flask, jsonify, request, render_template, redirect
 import json
-import glob
 from base64 import b64encode
-from json import dumps
-import time
 
 ENCODING = "utf-8"
 path_1 = 'idcard.jpg'

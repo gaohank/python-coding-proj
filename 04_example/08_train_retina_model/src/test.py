@@ -37,7 +37,7 @@ flip = False
 for c in range(count):
   s_time = time.time()
   faces, landmarks = detector.detect(img, thresh, scales=scales, do_flip=flip)
-  print(time.time()-s_time)
+  print(time.time() - s_time)
   print(c, faces.shape, landmarks.shape)
 
 if faces is not None:

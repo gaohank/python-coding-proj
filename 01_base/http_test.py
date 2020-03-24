@@ -1,8 +1,5 @@
 import cv2
 import numpy as np
-import os
-import requests
-from time import time
 import tensorflow as tf
 import base64
 
