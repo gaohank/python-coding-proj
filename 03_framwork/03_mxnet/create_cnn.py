@@ -123,3 +123,6 @@ def get_symbol():
     conv_6_sep = Conv(conv_5, num_filter=512, kernel=(1, 1), pad=(0, 0), stride=(1, 1), name="conv_6sep")
     fc1 = get_fc1(conv_6_sep, 128, 'GDC')
     return fc1
+
+
+get_symbol()
