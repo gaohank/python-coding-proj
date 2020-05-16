@@ -125,4 +125,31 @@ def get_symbol():
     return fc1
 
 
-get_symbol()
+embedding = get_symbol()
+gt_label = mx.symbol.Variable('softmax_label')
+_weight = mx.symbol.Variable("fc7_weight",
+                             shape=(410, 128),
+                             lr_mult=1.0,
+                             wd_mult=1.0,
+                             init=mx.init.Normal(0.01))
+s = 64.0
+_weight = mx.symbol.L2Normalization(_weight, mode='instance')
+nembedding = mx.symbol.L2Normalization(embedding, mode='instance', name='fc1n') * s
+fc7 = mx.sym.FullyConnected(data=nembedding,
+                            weight=_weight,
+                            no_bias=True,
+                            num_hidden=410,
+                            name='fc7')
+zy = mx.sym.pick(fc7, gt_label, axis=1)
+cos_t = zy / s
+t = mx.sym.arccos(cos_t)
+t = t + 0.5
+body = mx.sym.cos(t)
+new_zy = body * s
+diff = new_zy - zy
+diff = mx.sym.expand_dims(diff, 1)
+gt_one_hot = mx.sym.one_hot(gt_label, depth=410, on_value=1.0, off_value=0.0)
+body = mx.sym.broadcast_mul(gt_one_hot, diff)
+fc7 = fc7 + body
+softmax = mx.symbol.SoftmaxOutput(data=fc7, label = gt_label, name='softmax', normalization='valid')
+print(softmax.get_internals())
